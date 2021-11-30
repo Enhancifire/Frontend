@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 
+import Post from './components/Test1/Post';
+
 function App() {
   return (
     <div className="App">
@@ -12,8 +14,13 @@ function App() {
             <button className="navbar-newPost">New Post</button>
           </div>
         </div>
-
       </nav>
+    <div className="mainBlog">
+      <Post />
+      <Post />
+      <Post />
+      <Post />
+      </div>
     </div>
   );
 }
