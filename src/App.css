@@ -7,13 +7,20 @@
  height: 10vh; 
 }
 
+.App{
+  display: flex;
+  flex-direction: column;
+}
+
 /* navbar */
 .navbar{
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 35px;
+  padding-top: 28px;
+  padding-left: 35px;
   margin-left: -120px;
+  
 }
 
 .navbar-logo{
@@ -21,6 +28,7 @@
   font-size: 30px;
   font-weight: bold;
   color: #673CDF;
+  padding-right: 100px;
 
 }
 
@@ -58,4 +66,13 @@ cursor: pointer;
  background-color: #673CDF;
  border-radius: 5px;
  color: white;
+}
+
+/* navbar end */
+
+.mainBlog{
+  padding-top: 20px;
+  padding-left: 150px;
+  align-items: center;
+  
 }
