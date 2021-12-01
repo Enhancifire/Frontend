@@ -17,7 +17,7 @@ const Login = ({setUsername}) => {
 
    const loginFunc = async (email, username ,password)=>{
 
-
+    // feed all the data and expect username from the server and returns it
      return "hello world"
    }
 
