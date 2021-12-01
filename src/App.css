@@ -10,6 +10,7 @@
 .App{
   display: flex;
   flex-direction: column;
+  
 }
 
 /* navbar */
@@ -75,4 +76,9 @@ cursor: pointer;
   padding-left: 150px;
   align-items: center;
   
+}
+/* wrap login with this */
+.loginWrapper{
+  display: flex;
+  justify-content: center;
 }
