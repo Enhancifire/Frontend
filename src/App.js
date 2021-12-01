@@ -1,9 +1,15 @@
 import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 import Post from './components/Test1/Post';
+import Login from './components/Login/Login'
 
 function App() {
+
+
+ const [username, setUsername] = useState('');
+
   return (
     <div className="App">
       <nav className="navbar">
@@ -16,11 +22,11 @@ function App() {
         </div>
       </nav>
     <div className="mainBlog">
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      </div>
+     
+    </div>
+    <div className="loginWrapper">
+    <Login setUsername={setUsername} />
+    </div>
     </div>
   );
 }
