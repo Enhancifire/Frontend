@@ -77,6 +77,13 @@ cursor: pointer;
   align-items: center;
   
 }
+
+.Post-Component{
+  
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 /* wrap login with this */
 .loginWrapper{
   display: flex;
