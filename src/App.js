@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
 
 import Post from './components/Test1/Post';
 import Login from './components/Login/Login';
 import Signin from './components/Signin/Signin';
+import Blog from './components/Blog/Blog';
 
 function App() {
 
@@ -12,19 +13,33 @@ function App() {
   const [username, setUsername] = useState();
 
   const IsAuthed = ({children}) => {
-  const userAuthed = username;
-
-  return userAuthed != null
-  ?children 
-  :<Navigate to='/login'/>
+    
+  if(username){
+    return children
+  }else{
+    return <Navigate to='/login' />
+  }
+  // return username === null
+  // ?console.log(username) 
+  // :<Navigate to='/login'/>
 }
+
+
+  useEffect(() => {
+    if(localStorage.getItem('username')){
+      setUsername(localStorage.getItem('username'))
+      console.log(localStorage.getItem('username'))
+    }else{
+      console.log('no user found')
+    }
+  }, []);
 
   return (
     <div className="App">
       <nav className="navbar">
         <div className="navbar-logo">Anon-Blog</div>
         <div className="navbar-items">
-        <a href="/posts" style={{"text-decoration":"none"}}><div className="navbar-home">Home</div></a>
+         <div className="navbar-home " onClick={()=>{return <Navigate to='/posts' />}}>Home </div>
           {username?
           <div className="navbar-post">
             <button onClick={console.log('redirecting')} className="navbar-newPost">New Post</button>
@@ -39,8 +54,6 @@ function App() {
           }
         </div>
       </nav>
-
-     
 
     <BrowserRouter>
       <Routes>
@@ -58,9 +71,9 @@ function App() {
          </Route>
 
          <Route path="posts" element={
-          <IsAuthed> 
-         <div className="Post-Component"><Post /><Post /></div>
-         </IsAuthed>
+          <>
+          <div className="Post-Component"><Post /><Post /></div>
+         </>
          }>
          </Route>
       </Routes>

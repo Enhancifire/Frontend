@@ -1,7 +1,31 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './Post.module.css';
+import axios from "axios";
 
 const Post = () => {
+
+
+   const fetchPost = async ()=> {
+       fetch('http://localhost:8080/')
+       .then((resp)=>{
+           console.log(resp);
+       })
+       .catch((err)=>{console.log(err)})
+   }
+
+// const fetchPost = async()=>{
+//     console.log("flsjdflksjf");
+//     axios.get('http://127.0.0.1:5000/post').then((resp)=>{
+//         console.log(resp);
+//     })
+// }
+
+//    "proxy": "http://127.0.0.1:5000/",
+
+    useEffect(() => {
+        fetchPost();
+
+    }, []);
     return (
         <div className={styles.Post}>
             <div className={styles.posttitle}>Here's how I spent two years of my College</div>

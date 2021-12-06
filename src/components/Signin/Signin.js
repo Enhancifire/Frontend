@@ -1,6 +1,24 @@
 import React from 'react'
 import styles from './Signin.module.css';
 import { useState } from 'react';
+import {Navigate} from 'react-router-dom';
+
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
+
+const notify = ()=>{
+    toast("🦄: User Created, Please Login", {
+       position: "top-center",
+       autoClose: 5000,
+       hideProgressBar: false,
+       closeOnClick: true,
+       pauseOnHover: true,
+       draggable: true,
+       progress: undefined,
+       });
+      
+}
 
 const Signin = () => {
     const [email, setemail] = useState(null);
@@ -14,10 +32,34 @@ const Signin = () => {
         console.log(user);
     }
 
+
    const loginFunc = async (email, username ,password)=>{
 
-    // feed all the data and expect username from the server and returns it
-     return "hello world"
+    const info = {
+        email:email,
+        password: password,
+        username:username
+    }
+
+    const data = {
+            method: 'POST',
+            headers: {"Content-Type": "application/json; charset=UTF-8"},
+            body: JSON.stringify(info)
+          }
+          
+        console.log(data);
+    
+     fetch(`/signup`,data)
+     .then((resp)=>{
+         console.log(resp);
+         localStorage.setItem('username',username );
+     })
+     .then(()=>{
+         console.log('hello')
+        notify();
+        
+     })
+     .catch((err)=>{console.log(err)});
    }
 
     return (
